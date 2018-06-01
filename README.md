@@ -1,13 +1,18 @@
+#test update
 #  Project Name
 
 > Project description
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/airBnC/booking-module
+  	Cat
+  - https://github.com/airBnC/property-info-module
+  	Ivan
+  - https://github.com/airBnC/calendar-module
+  	Justin
+  - https://github.com/airBnC/reviews-module
+  	Alex
 
 ## Table of Contents
 
