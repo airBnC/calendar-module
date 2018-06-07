@@ -159,3 +159,13 @@ module.exports = data;
 // 	[[24], [25, 82], [26, 82], [27, 82], [28], [29, 500], [30]],
 // 	[null, null, null, null, null,  null, null
 // ]
+
+
+
+
+
+
+
+//TO MAKE DATA WAY SMALLER REACTOR
+//just use the starting inex and the ending index and run through a
+// loop like map to fill in the dates
