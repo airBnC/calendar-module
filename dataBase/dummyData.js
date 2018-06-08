@@ -41,11 +41,11 @@ const data = [
 	},
 	{
 		year: 18,
-		cost: 411,
+		cost: 911,
 		month: 'June',
 		beginning: 5,
 		day: 30,
-		daysOpen: [1, 2, 3, 6, 8, 12, 15, 22, 23, 24, 25, 28, 31]
+		daysOpen: [1, , 3, 6, 8, 12, 15, 22, 23, 24, 25, 28, 31]
 	},
 	{
 		year: 18,

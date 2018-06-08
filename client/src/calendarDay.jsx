@@ -20,6 +20,7 @@ class CalendarDay extends React.Component {
     return (
         <Span>
           {this.props.day}
+          {this.props.cost}
         </Span>
     )
   }

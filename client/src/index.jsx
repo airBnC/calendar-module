@@ -33,19 +33,19 @@ class App extends React.Component {
     super(props)
     this.state = {
       data: '',
-      currentDate: ''
+      currentData: ''
     }
   }
 
   componentDidMount(){
     this.setState({
       data: data,
-      currentDate: data[5]
+      currentData: data[5]
     })
-    setTimeout(function(){
-      console.log('my state', this.state);
-    }.bind(this),500)
-    console.log('my data', data);
+    // setTimeout(function(){
+    //   console.log('my state', this.state);
+    // }.bind(this),500)
+    // console.log('my data', data);
     // axios.get('/').then(function(response){
 
     // }).catch(function(response){
@@ -61,7 +61,7 @@ class App extends React.Component {
           <DateBanner />
           <ArrowAfter />
         </DivNav>
-        <CalendarMonth data={this.state.data} currentData={this.state.currentDate}/>
+        <CalendarMonth data={this.state.data} currentData={this.state.currentData}/>
       </DivCalendar>
     )
   }

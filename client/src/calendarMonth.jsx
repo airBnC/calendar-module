@@ -54,8 +54,19 @@ class CalendarMonth extends React.Component {
         </HeadWrap>
         <Div>
           {Array.from({length: this.limit}, (v, i) => i).map((item, i) =>{
-            if(i >= this.props.currentData.beginning && i <= this.props.currentData.day + (this.props.currentData.beginning) - 1){
-              return <CalendarDay key={i} day={(i - this.props.currentData.beginning) + 1} />
+            {var actualDate = this.props.currentData.day + (this.props.currentData.beginning) - 1}
+            {var start = this.props.currentData.beginning}
+            {var startOffSet = (i - this.props.currentData.beginning) + 1}
+            { if(this.props.currentData.daysOpen !== undefined){
+                var costAvail =  Array.prototype.indexOf.call(this.props.currentData.daysOpen, startOffSet) !== -1 ? this.props.currentData.cost : '';
+                console.log('crap', costAvail)
+              }
+            }
+            // {console.log('my arr', Array.prototype.indexOf.call(this.props.currentData.daysOpen, 12))}
+            // {var costAvail = this.props.currentData.daysOpen.indexOf(i) !== -1 ? this.props.cost : ''}
+            // {var costAvail = this.props.currentData.daysOpen}
+            if(i >= start && i <= actualDate){
+              return <CalendarDay key={i} day={startOffSet} cost={costAvail} /> //cost={costAvail}
             }else{
               return <CalendarDay key={i} />
             }
