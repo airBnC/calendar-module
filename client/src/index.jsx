@@ -6,14 +6,14 @@ import ArrowAfter from './arrowAfter.jsx';
 import DateBanner from './dateBanner.jsx';
 import CalendarMonth from './calendarMonth.jsx';
 import styled from 'styled-components';
-// import data from './dummy_data.js';
+import data from '../../dataBase/dummyData.js';
+import axios from 'axios';
 
 const DivCalendar = styled.div`
   height:100%;
   width:100%;
   display:flex;
   flex-flow:column;
-  justify-content: center;
   align-items: center;
 `;
 
@@ -31,6 +31,26 @@ class App extends React.Component {
   
   constructor(props) {
     super(props)
+    this.state = {
+      data: '',
+      currentDate: ''
+    }
+  }
+
+  componentDidMount(){
+    this.setState({
+      data: data,
+      currentDate: data[5]
+    })
+    setTimeout(function(){
+      console.log('my state', this.state);
+    }.bind(this),500)
+    console.log('my data', data);
+    // axios.get('/').then(function(response){
+
+    // }).catch(function(response){
+
+    // })
   }
 
   render() {
@@ -41,7 +61,7 @@ class App extends React.Component {
           <DateBanner />
           <ArrowAfter />
         </DivNav>
-        <CalendarMonth />
+        <CalendarMonth data={this.state.data} currentData={this.state.currentDate}/>
       </DivCalendar>
     )
   }

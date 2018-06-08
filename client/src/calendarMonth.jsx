@@ -3,125 +3,65 @@ import $ from 'jquery';
 import CalendarDay from './calendarDay.jsx';
 import styled from 'styled-components';
 
-const Table = styled.div`
+const Div = styled.div`
+  display:flex;
+  flex-flow:row wrap;
+  height:30px;
+  width:100%;
+  border:none;
+
+`;
+
+const Wrap = styled.div`
   display:flex;
   flex-flow:column;
-  justify-content: center;
-  align-items: center;
-  height:85%;
-  width:90%;
+  height:90%;
+  width:100%;
+  padding-left: 6%;
 `;
 
-const Thead = styled.div`
+const HeadWrap = styled.div`
   display:flex;
   flex-flow:row;
-  justify-content: center;
-  align-items: center;
-  height:5%;
-  width:100%;
+  height:10%;
+  width:94%;
 `;
 
-const Tbody = styled.div`
-  height:95%;
+const Span = styled.span`
+  height:10%;
   width:100%;
-  display:flex;
-  flex-flow:column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Tr = styled.div`
-  height:15%;
-  width:100%;
-  display:flex;
-  flex-flow:row;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Th = styled.div`
-  height:100%;
-  width:14%;
   text-align:center;
 `;
 
 class CalendarMonth extends React.Component {
   
   constructor(props) {
-    super(props)
+    super(props);
+    this.limit = 42;
   }
 
   render() {
     return(
-        <Table>
-          <Thead>
-            <Tr>
-              <Th>Sun</Th>
-              <Th>Mon</Th>
-              <Th>Tues</Th>
-              <Th>Weds</Th>
-              <Th>Thurs</Th>
-              <Th>Fri</Th>
-              <Th>Sat</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            <Tr>
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-            </Tr>
-            <Tr>
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-            </Tr>
-            <Tr>
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-            </Tr>
-            <Tr>
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-            </Tr>
-            <Tr>
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-            </Tr>
-            <Tr>
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-                <CalendarDay />
-            </Tr>
-          </Tbody>
-      </Table>
+      <Wrap>  
+        <HeadWrap>
+          <Span>Sun</Span>
+          <Span>Mon</Span>
+          <Span>Tues</Span>
+          <Span>Weds</Span>
+          <Span>Thurs</Span>
+          <Span>Fri</Span>
+          <Span>Sat</Span>
+        </HeadWrap>
+        <Div>
+          {Array.from({length: this.limit}, (v, i) => i).map((item, i) =>{
+            if(i >= this.props.currentData.beginning && i <= this.props.currentData.day + (this.props.currentData.beginning) - 1){
+              return <CalendarDay key={i} day={(i - this.props.currentData.beginning) + 1} />
+            }else{
+              return <CalendarDay key={i} />
+            }
+         })}
+        </Div>
+      </Wrap>
     )
   }
 };
