@@ -22,7 +22,7 @@ const DivNav = styled.div`
   flex-flow:row;
   justify-content: center;
   align-items: center;
-  border:1px solid black;
+  /*border:1px solid black;*/
   height:15%;
   width:90%;
 `;

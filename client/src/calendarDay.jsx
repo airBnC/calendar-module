@@ -6,7 +6,7 @@ import BG from './stripedBG.jpeg';
 const Span = styled.span`
   height:120%;
   width:13%;
-  border:1px solid black;
+  border:1px solid white;
   text-align:center;
   display: flex;
   flex-flow:column;
@@ -19,11 +19,24 @@ const Span = styled.span`
 const Else = styled.span`
   height:120%;
   width:13%;
-  border:1px solid black;
+  border:1px solid white;
   text-align:center;
   display: flex;
   flex-flow:column;
   font-size: 12px;
+  background-color: #96eeee12;
+  color:#2b9eb0;
+`;
+
+const ElseIf = styled.span`
+  height:120%;
+  width:13%;
+  border:1px solid white;
+  text-align:center;
+  display: flex;
+  flex-flow:column;
+  font-size: 12px;
+
 `;
 
 const Div = styled.div`
@@ -50,7 +63,18 @@ class CalendarDay extends React.Component {
           </div>
         </Span>
       )
-    }else{
+    } else if (this.props.day === undefined && this.props.cost === undefined || this.props.cost === '' ) {
+      return (
+        <ElseIf>
+          <Div>
+            {  this.props.day }
+          </Div>
+          <div>
+            {  this.props.cost === undefined || this.props.cost === '' ? '' : '$'+this.props.cost  }
+          </div>
+        </ElseIf>
+      )
+    } else {
       return (
         <Else>
           <Div>
@@ -66,7 +90,6 @@ class CalendarDay extends React.Component {
 };
 
 module.exports = CalendarDay;
-
 
 
 
