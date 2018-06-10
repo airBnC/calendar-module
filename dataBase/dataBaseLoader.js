@@ -1,3 +1,48 @@
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/airbnc');
+let CalendarSchema = mongoose.Schema({
+  _id: Number,
+  year: String
+});
+
+let Calendar = mongoose.model('Calendar', CalendarSchema);
+
+const db = mongoose.connection;
+
+db.once('open', function(cb) {
+	console.log('DataBase Connected');
+});
+var counter = 0;
+function randomDataInserter(arr) {
+	var anser = [];
+	for (var i = 0; i < arr.length; i++) {
+		arr[i].cost = Math.floor(Math.random() * 850) + 150;
+		var tempArr = [];
+		for (var j = 1; j < arr[i].day; j++) {
+			var test = Math.floor(Math.random() * 10) + 1;
+			if(test >= 5){
+				tempArr.push(j);
+			}
+		}
+		arr[i].daysOpen = tempArr;
+		anser.push(arr[i])
+	}
+	var random = new Calendar({
+		_id: counter,
+		year: JSON.stringify(anser)
+	})
+
+	random.save(function(err) {
+		if(err)	{
+			console.log(err);
+		} else {
+			console.log('New Year Inserted');
+		}
+
+	})
+	counter++;
+}
+
 var data = [
 	{
 		year: 18,
@@ -97,26 +142,9 @@ var data = [
 	},
 	
 ]
-module.exports = data;
 
-//try makeing your months linked lists
+module.exports = {
+	data: data,
+	generator: randomDataInserter
+}
 
-
-// calendar:[
-// 	[null, null, null, null, null, [1], [2]],
-// 	[[3], [4], [5], [6], [7], [9], [9]],
-// 	[[10], [11, 82], [12, 82], [13, 82], [14, 82], [15], [16]],
-// 	[[17], [18], [19], [20], [21], [22], [23]],
-// 	[[24], [25, 82], [26, 82], [27, 82], [28], [29, 500], [30]],
-// 	[null, null, null, null, null,  null, null
-// ]
-
-
-
-
-
-
-
-//TO MAKE DATA WAY SMALLER REACTOR
-//just use the starting inex and the ending index and run through a
-// loop like map to fill in the dates

@@ -3,7 +3,7 @@ import $ from 'jquery';
 import styled from 'styled-components';
 import BG from '../../img/stripedBG.jpeg';
 
-const Span = styled.span`
+const RegularDay = styled.span`
   height:120%;
   width:13%;
   border:1px solid white;
@@ -16,7 +16,10 @@ const Span = styled.span`
   opacity: .3;
 `;
 
-const Else = styled.span`
+const AvailableDay = styled.span`
+  &:hover {
+      background: #96eeee;
+    }
   height:120%;
   width:13%;
   border:1px solid white;
@@ -28,7 +31,7 @@ const Else = styled.span`
   color:#2b9eb0;
 `;
 
-const ElseIf = styled.span`
+const EmptyDay = styled.span`
   height:120%;
   width:13%;
   border:1px solid white;
@@ -54,36 +57,36 @@ class CalendarDay extends React.Component {
   render() {
     if( this.props.day && this.props.cost === undefined || this.props.cost === '' ){
       return (
-        <Span>
+        <RegularDay>
           <Div>
             {  this.props.day }
           </Div>
           <div>
             {  this.props.cost === undefined || this.props.cost === '' ? '' : '$'+this.props.cost  }
           </div>
-        </Span>
+        </RegularDay>
       )
     } else if (this.props.day === undefined && this.props.cost === undefined || this.props.cost === '' ) {
       return (
-        <ElseIf>
+        <EmptyDay>
           <Div>
             {  this.props.day }
           </Div>
           <div>
             {  this.props.cost === undefined || this.props.cost === '' ? '' : '$'+this.props.cost  }
           </div>
-        </ElseIf>
+        </EmptyDay>
       )
     } else {
       return (
-        <Else>
+        <AvailableDay>
           <Div>
             {  this.props.day }
           </Div>
           <div>
             {  this.props.cost === undefined || this.props.cost === '' ? '' : '$'+this.props.cost  }
           </div>
-        </Else>
+        </AvailableDay>
       )
     }
   }
