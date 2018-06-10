@@ -57,11 +57,11 @@ class App extends React.Component {
     return(
       <DivCalendar>
         <DivNav>
-          <ArrowPrev />
-          <DateBanner />
-          <ArrowAfter />
+          <ArrowPrev currentData={this.state.currentData} />
+          <DateBanner currentData={this.state.currentData} />
+          <ArrowAfter currentData={this.state.currentData} />
         </DivNav>
-        <CalendarMonth data={this.state.data} currentData={this.state.currentData}/>
+        <CalendarMonth data={this.state.data} currentData={this.state.currentData} />
       </DivCalendar>
     )
   }

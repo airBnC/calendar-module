@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import styled from 'styled-components';
-import BG from './stripedBG.jpeg';
+import BG from '../../img/stripedBG.jpeg';
 
 const Span = styled.span`
   height:120%;
