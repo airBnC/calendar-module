@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
+
 mongoose.connect('mongodb://localhost/airbnc');
+
+
 let CalendarSchema = mongoose.Schema({
   _id: Number,
   year: String
@@ -13,6 +16,8 @@ db.once('open', function(cb) {
 	console.log('DataBase Connected');
 });
 var counter = 0;
+
+
 function randomDataInserter(arr) {
 	var anser = [];
 	for (var i = 0; i < arr.length; i++) {
@@ -145,6 +150,7 @@ var data = [
 
 module.exports = {
 	data: data,
-	generator: randomDataInserter
+	generator: randomDataInserter,
+	Calendar: Calendar
 }
 

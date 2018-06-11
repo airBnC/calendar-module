@@ -22,7 +22,6 @@ const DivNav = styled.div`
   flex-flow:row;
   justify-content: center;
   align-items: center;
-  /*border:1px solid black;*/
   height:15%;
   width:90%;
 `;
@@ -33,33 +32,43 @@ class App extends React.Component {
     super(props)
     this.state = {
       data: '',
-      currentData: ''
+      currentData: '',
+      thisMonth: 5
     }
   }
 
-  componentDidMount(){
-    this.setState({
-      data: data,
-      currentData: data[5]
+  changeMonth(month){
+    var that = this;
+    axios.get('/calendar/'+month).then(function(response){
+      that.setState({
+        data: JSON.parse(response.data[0].year),
+        thisMonth: month,
+        currentData: JSON.parse(response.data[0].year)[month]
+      })
+    }).catch(function(response){
+      console.log(response)
     })
-    // setTimeout(function(){
-    //   console.log('my state', this.state);
-    // }.bind(this),500)
-    // console.log('my data', data);
-    // axios.get('/').then(function(response){
+  }
 
-    // }).catch(function(response){
-
-    // })
+  componentDidMount(){
+    var that = this;
+    axios.get('/calendar/'+window.location.pathname.replace(/\/calendar\//,'').replace(/\//,'')).then(function(response){
+      that.setState({
+        data: JSON.parse(response.data[0].year),
+        currentData: JSON.parse(response.data[0].year)[that.state.thisMonth]
+      })
+    }).catch(function(response){
+      console.log(response)
+    })
   }
 
   render() {
     return(
       <DivCalendar>
         <DivNav>
-          <ArrowPrev currentData={this.state.currentData} />
+          <ArrowPrev state={this.state.thisMonth} changeMonth={this.changeMonth.bind(this)} />
           <DateBanner currentData={this.state.currentData} />
-          <ArrowAfter currentData={this.state.currentData} />
+          <ArrowAfter state={this.state.thisMonth} changeMonth={this.changeMonth.bind(this)} />
         </DivNav>
         <CalendarMonth data={this.state.data} currentData={this.state.currentData} />
       </DivCalendar>

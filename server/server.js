@@ -10,7 +10,7 @@ const generator = require('../dataBase/dataBaseLoader.js');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use('/calendar',express.static(__dirname + '/../client/dist'));
+app.use(/calendar\/(\d*\d*)\//,express.static(__dirname + '/../client/dist'));
 require('./routes.js')(app);
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);

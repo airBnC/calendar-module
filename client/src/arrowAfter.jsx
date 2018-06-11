@@ -20,17 +20,22 @@ const Div = styled.div`
   transform: rotate(180deg);
 `;
 
-
-
 class ArrowAfter extends React.Component {
   
   constructor(props) {
     super(props)
+    this.clickHandler = this.clickHandler.bind(this);
   }
+
+  clickHandler(){
+     var monthIs = this.props.state + 1;
+     this.props.changeMonth(monthIs);
+   }
+
 
   render() {
     return (
-        <Div />
+        <Div onClick={this.clickHandler} />
     )
   }
 };
