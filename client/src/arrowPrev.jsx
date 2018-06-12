@@ -27,7 +27,8 @@ class ArrowPrev extends React.Component {
   }
 
   clickHandler(){
-    var monthIs = this.props.state - 1;
+    var monthIs = (this.props.state - 1) > 0 ? this.props.state - 1 : 0;
+    console.log('monthis',monthIs)
     this.props.changeMonth(monthIs);
   }
 

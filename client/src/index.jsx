@@ -31,22 +31,16 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: '',
       currentData: '',
-      thisMonth: 5
+      thisMonth: 5,
+      year: ''
     }
   }
 
   changeMonth(month){
-    var that = this;
-    axios.get('/calendar/'+month).then(function(response){
-      that.setState({
-        data: JSON.parse(response.data[0].year),
-        thisMonth: month,
-        currentData: JSON.parse(response.data[0].year)[month]
-      })
-    }).catch(function(response){
-      console.log(response)
+    this.setState({
+      thisMonth: month,
+      currentData: this.state.year[month]
     })
   }
 
@@ -54,8 +48,8 @@ class App extends React.Component {
     var that = this;
     axios.get('/calendar/'+window.location.pathname.replace(/\/calendar\//,'').replace(/\//,'')).then(function(response){
       that.setState({
-        data: JSON.parse(response.data[0].year),
-        currentData: JSON.parse(response.data[0].year)[that.state.thisMonth]
+        currentData: JSON.parse(response.data[0].year)[that.state.thisMonth],
+        year:  JSON.parse(response.data[0].year)
       })
     }).catch(function(response){
       console.log(response)

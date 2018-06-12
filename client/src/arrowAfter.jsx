@@ -28,7 +28,7 @@ class ArrowAfter extends React.Component {
   }
 
   clickHandler(){
-     var monthIs = this.props.state + 1;
+     var monthIs = (this.props.state + 1) < 12 ? this.props.state + 1 : 11;
      this.props.changeMonth(monthIs);
    }
 
