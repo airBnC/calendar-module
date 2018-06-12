@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import styled from 'styled-components';
-import arrow from '../../img/arrow.png';
+import arrow from '../../../img/arrow.png';
 
 const Div = styled.div`
   &:hover {
