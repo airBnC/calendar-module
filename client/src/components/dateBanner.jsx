@@ -1,12 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-import styled from 'styled-components';
-
-const Div = styled.div`
-  border:1px solid black;
-  width:72%;
-  height:100%;
-`;
+import { DivBanner } from '../styles/styles.jsx';
 
 class DateBanner extends React.Component {
   
@@ -16,9 +10,9 @@ class DateBanner extends React.Component {
 
   render() {
     return (
-        <Div>
-
-      </Div>
+        <DivBanner>
+          {this.props.currentData.month} 20{this.props.currentData.year}
+      </DivBanner>
     )
   }
 };

@@ -1,3 +1,53 @@
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/airbnc');
+
+
+let CalendarSchema = mongoose.Schema({
+  _id: Number,
+  year: String
+});
+
+let Calendar = mongoose.model('Calendar', CalendarSchema);
+
+const db = mongoose.connection;
+
+db.once('open', function(cb) {
+	console.log('DataBase Connected');
+});
+var counter = 0;
+
+
+function randomDataInserter(arr) {
+	var anser = [];
+	for (var i = 0; i < arr.length; i++) {
+		arr[i].cost = Math.floor(Math.random() * 850) + 150;
+		var tempArr = [];
+		for (var j = 1; j < arr[i].day; j++) {
+			var test = Math.floor(Math.random() * 10) + 1;
+			if(test >= 5){
+				tempArr.push(j);
+			}
+		}
+		arr[i].daysOpen = tempArr;
+		anser.push(arr[i])
+	}
+	var random = new Calendar({
+		_id: counter,
+		year: JSON.stringify(anser)
+	})
+
+	random.save(function(err) {
+		if(err)	{
+			console.log(err);
+		} else {
+			console.log('New Year Inserted');
+		}
+
+	})
+	counter++;
+}
+
 var data = [
 	{
 		year: 18,
@@ -97,5 +147,10 @@ var data = [
 	},
 	
 ]
-module.exports = data;
+
+module.exports = {
+	data: data,
+	generator: randomDataInserter,
+	Calendar: Calendar
+}
 
