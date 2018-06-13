@@ -1,37 +1,11 @@
 import React from 'react';
 import $ from 'jquery';
 import CalendarDay from './calendarDay.jsx';
-import styled from 'styled-components';
+import { DivMonth } from '../styles/styles.jsx';
+import { Wrap } from '../styles/styles.jsx';
+import { HeadWrap } from '../styles/styles.jsx';
+import { Span } from '../styles/styles.jsx';
 
-const Div = styled.div`
-  display:flex;
-  flex-flow:row wrap;
-  height:30px;
-  width:100%;
-  border:none;
-
-`;
-
-const Wrap = styled.div`
-  display:flex;
-  flex-flow:column;
-  height:90%;
-  width:100%;
-  padding-left: 6%;
-`;
-
-const HeadWrap = styled.div`
-  display:flex;
-  flex-flow:row;
-  height:10%;
-  width:94%;
-`;
-
-const Span = styled.span`
-  height:10%;
-  width:100%;
-  text-align:center;
-`;
 
 class CalendarMonth extends React.Component {
   
@@ -52,7 +26,7 @@ class CalendarMonth extends React.Component {
           <Span>Fri</Span>
           <Span>Sat</Span>
         </HeadWrap>
-        <Div>
+        <DivMonth>
           { Array.from({ length: this.limit }, (v, i) => i).map((item, i) => {
             { var actualDate = this.props.currentData.day + (this.props.currentData.beginning) - 1 }
             { var start = this.props.currentData.beginning }
@@ -69,41 +43,10 @@ class CalendarMonth extends React.Component {
             }
            })
           }
-        </Div>
+        </DivMonth>
       </Wrap>
     )
   };
 };
 
 module.exports = CalendarMonth;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
