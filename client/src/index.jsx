@@ -5,7 +5,6 @@ import ArrowPrev from './components/arrowPrev.jsx';
 import ArrowAfter from './components/arrowAfter.jsx';
 import DateBanner from './components/dateBanner.jsx';
 import CalendarMonth from './components/calendarMonth.jsx';
-import data from '../../dataBase/dummyData.js';
 import axios from 'axios';
 import { DivCalendar } from './styles/styles.jsx';
 import { DivNav } from './styles/styles.jsx';
