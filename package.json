@@ -7,6 +7,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "deploy": "npm i && node .loadMyDataBase.js && webpack && nodemon server/server.js;
     "start": "nodemon server/server.js",
     "react-dev": "webpack -d --watch",
     "jestUpdate": "jest --updateSnapshot"
