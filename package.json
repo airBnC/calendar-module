@@ -9,13 +9,12 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "react-dev": "webpack -d --watch",
-    "jestUpdate":"jest --updateSnapshot"
+    "jestUpdate": "jest --updateSnapshot"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "babel-loader": "^7.1.4",
     "body-parser": "^1.18.3",
-    "enzyme-adapter-react-15": "^1.0.5",
     "enzyme-adapter-react-helper": "^1.2.3",
     "enzyme-to-json": "^3.3.4",
     "express": "^4.16.3",
@@ -29,7 +28,8 @@
     "react-dom": "^16.4.0",
     "react-env": "0.0.0",
     "react-test-renderer": "^16.4.0",
-    "styled-components": "^3.3.2"
+    "styled-components": "^3.3.2",
+    "webpack-command": "^0.2.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -42,7 +42,7 @@
     "eslint": "^4.19.1",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "file-loader": "^1.1.11",
-    "image-webpack-loader": "^4.3.0",
+    "image-webpack-loader": "^4.3.1",
     "jest": "^23.1.0",
     "jest-enzyme": "^6.0.1",
     "webpack": "^4.10.2",
