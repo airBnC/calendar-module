@@ -9,7 +9,7 @@ const generator = require('../dataBase/dataBaseLoader.js');
 // }
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use('/rooms/:id',express.static(__dirname + '/../client/dist/'));
+app.use('/rooms/:id',express.static(__dirname + '/../client/'));
 require('./routes.js')(app);
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
